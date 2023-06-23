@@ -6,11 +6,11 @@ function Section({Icon,title,color,selected}) {
     <div className={`section ${selected && 'section--selected'}`} 
     
     style={{
-        borderBottom : `3px solid ${color}`,
-        color:`${ selected && color}`
+        borderBottom: `3px solid ${ color}`,
+        color:`${ selected && color}`,
     }}>
         {Icon}
-        <h3>{title}</h3>
+        <h4>{title}</h4>
     </div>
   )
 }
