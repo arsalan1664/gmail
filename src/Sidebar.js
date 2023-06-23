@@ -10,6 +10,10 @@ import LabelImportantIcon from '@mui/icons-material/LabelImportant';
 import NearMeIcon from '@mui/icons-material/NearMe';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import NoteIcon from '@mui/icons-material/Note';
+import { IconButton } from '@mui/material';
+import PersonIcon from '@mui/icons-material/Person';
+import DuoIcon from '@mui/icons-material/Duo';
+import PhoneIcon from '@mui/icons-material/Phone';
 
 
 function Sidebar (){
@@ -25,6 +29,22 @@ function Sidebar (){
             <SidebarOption Icon={<NearMeIcon/>} title='Sent' number={7}/>
             <SidebarOption Icon={<NoteIcon/>} title='Draft' number={16}/>
             <SidebarOption Icon={<ExpandMoreIcon/>} title='More' number={68}/>
+
+            <div className='sidebar__footer'>
+                <div className='sidebar__footerIcon'>
+                    <IconButton>
+                        <PersonIcon/>
+                    </IconButton>
+                        
+                    <IconButton>
+                        <DuoIcon/>
+                    </IconButton>
+
+                    <IconButton>
+                        <PhoneIcon/>
+                    </IconButton>
+                </div>
+            </div>
         </div>
     )
 }
