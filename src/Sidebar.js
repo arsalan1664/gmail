@@ -23,8 +23,8 @@ function Sidebar (){
 
             <SidebarOption Icon={<InboxIcon/>} title='Inbox' number={56} selected={true}/>
             <SidebarOption Icon={<StarIcon/>} title='Stared' number={22}/>
-            <SidebarOption Icon={<AccessTimeIcon/>} title='Snoozed' number={12}/>
-            <SidebarOption Icon={<LabelImportantIcon/>} title='Important' number={36}/>
+            <SidebarOption Icon={<AccessTimeIcon/>} title='Snoozed' number={0}/>
+            <SidebarOption Icon={<LabelImportantIcon/>} title='Important' number={0}/>
             
             <SidebarOption Icon={<NearMeIcon/>} title='Sent' number={7}/>
             <SidebarOption Icon={<NoteIcon/>} title='Draft' number={16}/>
