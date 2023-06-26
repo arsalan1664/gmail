@@ -5,12 +5,16 @@ import Sidebar from './Sidebar';
 import {BrowserRouter as Router ,  Route, Routes } from 'react-router-dom'
 import Mail from './Mail';
 import EmailList from './EmailList';
+import SendMail from './SendMail';
 
 function App() {
   return (
     <Router>
     <div className="app">
+
       <Header/>
+
+      {/* ---------------------- */}
       <div className='app__body'>
        <Sidebar/>
 
@@ -20,11 +24,13 @@ function App() {
 
        <Routes>
           <Route path='/' element={<EmailList/>} /> 
-        </Routes>
-
-          
+        </Routes>  
       </div>
-    </div>
+      {/* ---------------------- */}
+
+      <SendMail/>
+      
+     </div>
     </Router>
   );
 }
