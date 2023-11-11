@@ -1,5 +1,5 @@
-import React from 'react'
-import "./Sidebar.css"
+import React from 'react';
+import "./Sidebar.css";
 import AddIcon from '@mui/icons-material/Add';
 import Button from '@mui/material/Button';
 import SidebarOption from './SidebarOption';
@@ -14,39 +14,47 @@ import { IconButton } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import DuoIcon from '@mui/icons-material/Duo';
 import PhoneIcon from '@mui/icons-material/Phone';
+import { useDispatch } from 'react-redux';
+import { openSendMessge } from './features/mail/mailSlice';
 
+function Sidebar() {
+    const dispatch = useDispatch();
 
-function Sidebar (){
-    return(
+    const handleClick = (e) => {
+        e.preventDefault();
+        dispatch(openSendMessge());
+    };
+
+    return (
         <div className="sidebar">
-            <Button startIcon={<AddIcon fontSize='Large'/> } className="sidebar__compose">Compose</Button>
+            <Button onClick={handleClick} startIcon={<AddIcon fontSize='large' />} className="sidebar__compose">Compose</Button>
 
-            <SidebarOption Icon={<InboxIcon/>} title='Inbox' number={56} selected={true}/>
-            <SidebarOption Icon={<StarIcon/>} title='Stared' number={22}/>
-            <SidebarOption Icon={<AccessTimeIcon/>} title='Snoozed' number={0}/>
-            <SidebarOption Icon={<LabelImportantIcon/>} title='Important' number={0}/>
+            <SidebarOption Icon={<InboxIcon />} title='Inbox' number={56} selected={true}/>
+            <SidebarOption Icon={<StarIcon />} title='Stared' number={22}/>
+            <SidebarOption Icon={<AccessTimeIcon />} title='Snoozed' number={0}/>
+            <SidebarOption Icon={<LabelImportantIcon />} title='Important' number={0}/>
             
-            <SidebarOption Icon={<NearMeIcon/>} title='Sent' number={7}/>
-            <SidebarOption Icon={<NoteIcon/>} title='Draft' number={16}/>
-            <SidebarOption Icon={<ExpandMoreIcon/>} title='More' number={68}/>
+            <SidebarOption Icon={<NearMeIcon />} title='Sent' number={7}/>
+            <SidebarOption Icon={<NoteIcon />} title='Draft' number={16}/>
+            <SidebarOption Icon={<ExpandMoreIcon />} title='More' number={68}/>
 
             <div className='sidebar__footer'>
                 <div className='sidebar__footerIcon'>
                     <IconButton>
-                        <PersonIcon/>
+                        <PersonIcon />
                     </IconButton>
                         
                     <IconButton>
-                        <DuoIcon/>
+                        <DuoIcon />
                     </IconButton>
 
                     <IconButton>
-                        <PhoneIcon/>
+                        <PhoneIcon />
                     </IconButton>
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default Sidebar
+export default Sidebar;

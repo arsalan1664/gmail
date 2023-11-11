@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './EmailList.css'
 import { Checkbox, IconButton } from '@mui/material'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -13,10 +13,19 @@ import PeopleIcon from '@mui/icons-material/People';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import Section from './Section'
 import EmailRow from './EmailRow';
+import { Query } from './Query';
+import { onSnapshot } from 'firebase/firestore';
 
 function EmailList() {
-
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+    const [emails, setEmails] = useState([]);
+
+    useEffect(() => {
+       const q = Query();
+       const unsub = onSnapshot(q, (snapshot) => {
+           setEmails(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data()})))
+       })
+    }, [])
   return (
     <div className='emailList'>
         <div className='emailList__setting'>
@@ -54,10 +63,16 @@ function EmailList() {
                 <Section Icon={<LocalOfferIcon/>} title='Promotion' color='green' />
             </div>
 
-            <div className='emailList__list'>
-                <EmailRow title='Twitch' subject={'Hey! Follow streamer'} discription={'this is test'} time='10pm'/>
-                <EmailRow title='Twitch' subject={'Hey! Follow streamer'} discription={'this is test'} time='10pm'/>
-                <EmailRow title='Twitch' subject={'Hey! Follow streamer'} discription={'this is test'} time='10pm'/>
+            <div className="emailList__list">
+                {emails.map(email => (
+                    <EmailRow 
+                        key={email.id}
+                        title={email.data.to}
+                        subject={email.data.subject}
+                        discription={email.data.message}
+                        time={(email.data.timestamp.toDate()).toUTCString()}
+                    />
+                ))}
             </div>
         
     </div>
